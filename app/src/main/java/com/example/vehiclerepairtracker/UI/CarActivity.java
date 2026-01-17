@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,12 +25,19 @@ import java.util.List;
 
 public class CarActivity extends AppCompatActivity {
     public Repository repository;
-
+    EditText searchText;
+    Button searchButton;
+    CarAdapter carAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_car);
+
+
+        searchText = findViewById(R.id.searchText);
+        searchButton = findViewById(R.id.searchButton);
+
 
         FloatingActionButton btn = findViewById(R.id.addCarDetails);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -45,17 +53,46 @@ public class CarActivity extends AppCompatActivity {
 
         repository = new Repository(getApplication());
 
+        repository.insert(new Car(0, "2010", "Ford", "Focus", 4));
+        repository.insert(new Car(0, "2012", "Ford", "Fusion", 4));
+        repository.insert(new Car(0, "2018", "Toyota", "Camry", 4));
+        repository.insert(new Car(0, "2020", "Toyota", "Corolla", 4));
+        repository.insert(new Car(0, "2021", "Honda", "Civic", 4));
+        repository.insert(new Car(0, "2019", "Honda", "Accord", 4));
+        repository.insert(new Car(0, "2022", "Tesla", "Model 3", 4));
+        repository.insert(new Car(0, "2023", "Tesla", "Model X", 4));
+        repository.insert(new Car(0, "2015", "Ford", "Mustang", 2));
+
+        // Views
+        searchText = findViewById(R.id.searchText);
+        searchButton = findViewById(R.id.searchButton);
+        FloatingActionButton fab = findViewById(R.id.addCarDetails);
+
+        // RecyclerView + Adapter
         RecyclerView recyclerView = findViewById(R.id.recycler);
-        List<Car> allCars = repository.getmAllCars();
-        final CarAdapter carAdapter = new CarAdapter(this);
+        carAdapter = new CarAdapter(this);
         recyclerView.setAdapter(carAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        carAdapter.setCars(allCars);
+        // Load all cars initially
+        carAdapter.setCars(repository.getmAllCars());
 
+        // FAB adds a new car (example)
+        fab.setOnClickListener(v -> {
+            Car newCar = new Car(0, "2026", "Honda", "Civic", 4);
+            repository.insert(newCar);
+            carAdapter.setCars(repository.getmAllCars()); // refresh
+        });
 
-
-
+        // Search functionality
+        searchButton.setOnClickListener(v -> {
+            String query = searchText.getText().toString().trim();
+            if (query.isEmpty()) {
+                carAdapter.setCars(repository.getmAllCars());
+            } else {
+                carAdapter.setCars(repository.searchCars(query));
+            }
+        });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

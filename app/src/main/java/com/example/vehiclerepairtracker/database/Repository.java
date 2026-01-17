@@ -99,6 +99,9 @@ public class Repository {
     public Car getCarById(int id){
         return mCarDao.getCarById(id);}
 
+    public List<Car> searchCars(String searchTerm) {
+        return mCarDao.searchCars("%" + searchTerm + "%");
+    }
 
 
 

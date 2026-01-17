@@ -28,6 +28,9 @@ public interface CarListDao {
     @Query("SELECT * FROM Cars WHERE carId = :id LIMIT 1")
     Car getCarById(int id);
 
+    @Query("SELECT * FROM Cars WHERE make LIKE :query OR model LIKE :query")
+    List<Car> searchCars(String query);
+
 
 
 
