@@ -25,6 +25,9 @@ public interface CarListDao {
     @Query("SELECT * FROM Cars" )
     List<Car> getAllCars();
 
+    @Query("SELECT * FROM Cars WHERE carId = :id LIMIT 1")
+    Car getCarById(int id);
+
 
 
 

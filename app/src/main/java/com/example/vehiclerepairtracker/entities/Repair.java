@@ -8,11 +8,13 @@ public class Repair {
 
     @PrimaryKey
     private int repairId;
+    private int carId;
     private String repairFinished;
     private String dateFinished;
 
-    public Repair(int repairId, String repairFinished, String dateFinished) {
+    public Repair(int repairId, int carId, String repairFinished, String dateFinished) {
         this.repairId = repairId;
+        this.carId = carId;
         this.repairFinished = repairFinished;
         this.dateFinished = dateFinished;
     }
@@ -26,6 +28,14 @@ public class Repair {
 
     public void setRepairId(int repairId) {
         this.repairId = repairId;
+    }
+
+    public int getCarId() {
+        return carId;
+    }
+
+    public void setCarId(int carId) {
+        this.carId = carId;
     }
 
     public String getRepairFinished() {

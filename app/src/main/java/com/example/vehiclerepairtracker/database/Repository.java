@@ -115,6 +115,9 @@ public class Repository {
 
     }
 
+    public Car getCarById(int id){
+        return mCarDao.getCarById(id);}
+
 
 
 
