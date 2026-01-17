@@ -16,8 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.vehiclerepairtracker.R;
 import com.example.vehiclerepairtracker.database.Repository;
 import com.example.vehiclerepairtracker.entities.Car;
+import com.example.vehiclerepairtracker.entities.Vehicle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarActivity extends AppCompatActivity {
@@ -33,13 +35,15 @@ public class CarActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int vehicleDoors = 4;
+                Vehicle newCar = new Car(1,"1992","Honda", "Civic", vehicleDoors);
+                System.out.println("Added vehicle: " + newCar.getVehicleType() + " " + newCar.getMake() + " " + newCar.getModel());
                 Intent intent = new Intent(CarActivity.this, CarDetailsActivity.class);
                 startActivity(intent);
             }
         });
 
         repository = new Repository(getApplication());
-
 
         RecyclerView recyclerView = findViewById(R.id.recycler);
         List<Car> allCars = repository.getmAllCars();
@@ -48,6 +52,7 @@ public class CarActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         carAdapter.setCars(allCars);
+
 
 
 

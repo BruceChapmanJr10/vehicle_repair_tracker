@@ -4,21 +4,22 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Cars")
-public class Car {
+public class Car extends Vehicle {
     @PrimaryKey(autoGenerate = true)
     private int carId;
     private String year;
     private String make;
     private String model;
+    private int doors;
 
-    public Car(int carId, String year, String make, String model) {
+    public Car(int carId, String year, String make, String model, int doors) {
+        super(make, model);
         this.carId = carId;
         this.year = year;
         this.make = make;
         this.model = model;
-    }
+        this.doors = doors;
 
-    public Car() {
     }
 
     public int getCarId() {
@@ -51,5 +52,14 @@ public class Car {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public int getDoors() { return doors; }
+
+
+
+    @Override
+    public String getVehicleType() {
+        return "Car";
     }
 }

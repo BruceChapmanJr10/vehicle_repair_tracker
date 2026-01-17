@@ -132,7 +132,8 @@ public class CarDetailsActivity extends AppCompatActivity {
                         0,
                         editYear.getText().toString(),
                         editMake.getText().toString(),
-                        editModel.getText().toString()
+                        editModel.getText().toString(),
+                        4
 
                 );
                 repository.insert(newCar);
@@ -181,6 +182,22 @@ public class CarDetailsActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        RecyclerView recyclerView = findViewById(R.id.repairRecyclerView);
+        final RepairAdapter repairAdapter = new RepairAdapter(this);
+        recyclerView.setAdapter(repairAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        List<Repair> filteredRepairs = new ArrayList<>();
+        for (Repair p : repository.getRepairsForCar(carId)){
+            if (p.getCarId() == carId) filteredRepairs.add(p);
+        }
+        repairAdapter.setRepairList(filteredRepairs);
+
     }
 
 
