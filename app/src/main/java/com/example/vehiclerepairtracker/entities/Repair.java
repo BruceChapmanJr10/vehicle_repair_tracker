@@ -1,12 +1,18 @@
 package com.example.vehiclerepairtracker.entities;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Repairs")
+@Entity(tableName = "Repairs", foreignKeys = @ForeignKey(
+        entity = Car.class,
+        parentColumns = "carId",
+        childColumns = "carId",
+        onDelete = ForeignKey.CASCADE
+))
 public class Repair {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int repairId;
     private int carId;
     private String repairFinished;

@@ -22,8 +22,8 @@ public interface RepairListDao {
     @Delete
     void delete(Repair repair);
 
-    @Query("SELECT * FROM Repairs")
-    List<Repair> getAllRepairs();
+    @Query("SELECT * FROM Repairs WHERE carId = :carId ORDER BY dateFinished")
+    List<Repair> getRepairsForCar(int carId);
 
 
 

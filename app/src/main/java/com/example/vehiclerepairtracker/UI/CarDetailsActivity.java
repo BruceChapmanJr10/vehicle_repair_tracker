@@ -51,6 +51,7 @@ public class CarDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(CarDetailsActivity.this, RepairDetailsActivity.class);
+                intent.putExtra("carId", carId);
                 startActivity(intent);
             }
         });
@@ -88,7 +89,7 @@ public class CarDetailsActivity extends AppCompatActivity {
         recyclerView.setAdapter(repairAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<Repair> filteredRepairs = new ArrayList<>();
-        for (Repair e : repository.getAllRepairs()) {
+        for (Repair e : repository.getRepairsForCar(carId)) {
             if (e.getCarId() == carId) filteredRepairs.add(e);
 
         }
@@ -133,7 +134,7 @@ public class CarDetailsActivity extends AppCompatActivity {
                         editMake.getText().toString(),
                         editModel.getText().toString()
 
-                        );
+                );
                 repository.insert(newCar);
                 currentCar = newCar;
                 Toast.makeText(this, "Car added", Toast.LENGTH_SHORT).show();
@@ -161,7 +162,7 @@ public class CarDetailsActivity extends AppCompatActivity {
             }
 
             numRepairs = 0;
-            for (Repair repair : repository.getAllRepairs()) {
+            for (Repair repair : repository.getRepairsForCar(carId)) {
                 if (repair.getCarId() == currentCar.getCarId()) numRepairs++;
             }
 
@@ -181,9 +182,6 @@ public class CarDetailsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
 
 
 }

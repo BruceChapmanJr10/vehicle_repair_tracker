@@ -29,10 +29,10 @@ public class RepairAdapter extends RecyclerView.Adapter<RepairAdapter.RepairView
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int position = getAdapterPosition();
+                    int position = getBindingAdapterPosition();
                     final Repair current = repairList.get(position);
                     Intent intent = new Intent(context, RepairDetailsActivity.class);
-                    intent.putExtra("excursionId", current.getRepairId());
+                    intent.putExtra("repairId", current.getRepairId());
                     intent.putExtra("repair", current.getRepairFinished());
                     intent.putExtra("date", current.getDateFinished());
                     intent.putExtra("carId", current.getCarId());

@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Cars")
 public class Car {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int carId;
     private String year;
     private String make;

@@ -30,16 +30,7 @@ public class Repository {
     }
 
     public List<Car> getmAllCars() {
-        databaseExecutor.execute(() -> {
-            mAllCars = mCarDao.getAllCars();
-        });
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        return mAllCars;
+        return mCarDao.getAllCars();
     }
 
     public void insert(Car car) {
@@ -101,18 +92,8 @@ public class Repository {
         databaseExecutor.execute(() -> mRepairDao.delete(repair));
     }
 
-    public List<Repair>getAllRepairs() {
-        databaseExecutor.execute(() -> {
-            mAllRepairs = mRepairDao.getAllRepairs();
-        });
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return mAllRepairs;
-
+    public List<Repair> getRepairsForCar(int carId) {
+        return mRepairDao.getRepairsForCar(carId);
     }
 
     public Car getCarById(int id){
