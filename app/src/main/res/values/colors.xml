@@ -2,4 +2,24 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#2196F3</color>
+
+    <!-- Primary colors -->
+    <color name="blue_dark">#1976D2</color>
+    <color name="blue_light">#BBDEFB</color>
+
+    <!-- Accent colors -->
+    <color name="green">#4CAF50</color>
+    <color name="green_dark">#388E3C</color>
+    <color name="red">#F44336</color>
+    <color name="orange">#FF9800</color>
+
+    <!-- Neutral colors -->
+    <color name="gray">#9E9E9E</color>
+    <color name="light_gray">#E0E0E0</color>
+    <color name="dark_gray">#616161</color>
+
+    <!-- App background / UI -->
+    <color name="background">#F5F5F5</color>
+    <color name="divider">#BDBDBD</color>
 </resources>

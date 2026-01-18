@@ -14,8 +14,10 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
+        app:backgroundTint="@color/material_dynamic_primary60"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@color/background"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <ScrollView
@@ -40,12 +42,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vehicle Year" />
+                    android:text="Vehicle Year"
+                    android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/vehicleYear"
                     android:layout_width="100dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -56,12 +61,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vehicle Make" />
+                    android:text="Vehicle Make"
+                    android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/vehicleMake"
                     android:layout_width="100dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -72,12 +80,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vehicle Model" />
+                    android:text="Vehicle Model"
+                    android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/vehicleModel"
                     android:layout_width="120dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
             </LinearLayout>
 
         </LinearLayout>
