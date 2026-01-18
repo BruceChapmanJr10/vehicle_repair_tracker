@@ -9,15 +9,18 @@ import androidx.room.RoomDatabase;
 
 import com.example.vehiclerepairtracker.dao.CarListDao;
 import com.example.vehiclerepairtracker.dao.RepairListDao;
+import com.example.vehiclerepairtracker.dao.UserDao;
 import com.example.vehiclerepairtracker.entities.Car;
 import com.example.vehiclerepairtracker.entities.Repair;
+import com.example.vehiclerepairtracker.entities.User;
 
-@Database(entities = {Car.class, Repair.class}, version = 5, exportSchema = false)
+@Database(entities = {Car.class, Repair.class, User.class}, version = 6, exportSchema = false)
 
 public abstract class CarDatabaseBuilder extends RoomDatabase {
 
     public abstract CarListDao carListDao();
     public abstract RepairListDao repairListDao();
+    public abstract UserDao userDao();
 
     private static volatile CarDatabaseBuilder INSTANCE;
 

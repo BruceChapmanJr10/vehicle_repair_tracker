@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.example.vehiclerepairtracker.dao.CarListDao;
 import com.example.vehiclerepairtracker.dao.RepairListDao;
+import com.example.vehiclerepairtracker.dao.UserDao;
 import com.example.vehiclerepairtracker.entities.Car;
 import com.example.vehiclerepairtracker.entities.Repair;
 
@@ -16,6 +17,8 @@ public class Repository {
 
     private RepairListDao mRepairDao;
 
+    private UserDao mUserDao;
+
     private List<Car> mAllCars;
 
     private List<Repair> mAllRepairs;
@@ -27,6 +30,7 @@ public class Repository {
         CarDatabaseBuilder db = CarDatabaseBuilder.getDataBase(application);
         mCarDao = db.carListDao();
         mRepairDao= db.repairListDao();
+        mUserDao = db.userDao();
     }
 
     public List<Car> getmAllCars() {
@@ -95,6 +99,9 @@ public class Repository {
 
     public List<Car> searchCars(String searchTerm) {
         return mCarDao.searchCars("%" + searchTerm + "%");
+    }
+    public UserDao getUserDao() {
+        return mUserDao;
     }
 
 
