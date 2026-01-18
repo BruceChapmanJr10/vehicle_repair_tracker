@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
             User user = repository.getUserDao().getUserByUsername(username);
             if(user != null && user.getPasswordHash().equals(hashPassword(password))) {
                 Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, CarActivity.class));
+                startActivity(new Intent(this, MainActivity.class));
                 finish();
             } else {
                 Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show();

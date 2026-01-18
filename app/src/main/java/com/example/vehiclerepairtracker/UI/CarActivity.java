@@ -66,7 +66,6 @@ public class CarActivity extends AppCompatActivity {
         // Views
         searchText = findViewById(R.id.searchText);
         searchButton = findViewById(R.id.searchButton);
-        FloatingActionButton fab = findViewById(R.id.addCarDetails);
 
         Button reportButton = findViewById(R.id.reportButton);
 
@@ -111,10 +110,13 @@ public class CarActivity extends AppCompatActivity {
         carAdapter.setCars(repository.getmAllCars());
 
         // FAB adds a new car
+        FloatingActionButton fab = findViewById(R.id.addCarDetails);
+
+// Set a single click listener
         fab.setOnClickListener(v -> {
-            Car newCar = new Car(0, "2026", "Honda", "Civic", 4);
-            repository.insert(newCar);
             carAdapter.setCars(repository.getmAllCars());
+            Intent intent = new Intent(CarActivity.this, CarDetailsActivity.class);
+            startActivity(intent);
         });
 
         // Search functionality
