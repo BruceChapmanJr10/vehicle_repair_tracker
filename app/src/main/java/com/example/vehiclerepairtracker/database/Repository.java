@@ -34,15 +34,9 @@ public class Repository {
     }
 
     public void insert(Car car) {
-        databaseExecutor.execute(() -> {
-            mCarDao.insert(car);
-        });
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        databaseExecutor.execute(() -> mCarDao.insert(car));
     }
+
 
     public void update(Car car) {
         databaseExecutor.execute(() -> {

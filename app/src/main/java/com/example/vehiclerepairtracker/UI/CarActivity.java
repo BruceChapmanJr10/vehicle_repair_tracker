@@ -68,6 +68,39 @@ public class CarActivity extends AppCompatActivity {
         searchButton = findViewById(R.id.searchButton);
         FloatingActionButton fab = findViewById(R.id.addCarDetails);
 
+        Button reportButton = findViewById(R.id.reportButton);
+
+        reportButton.setOnClickListener(v -> {
+            List<Car> allCars = repository.getmAllCars();
+            StringBuilder report = new StringBuilder();
+
+            // Title
+            report.append("Vehicle Report\n");
+            report.append("Generated on: ").append(java.time.LocalDateTime.now()).append("\n\n");
+
+            // Column headers
+            report.append(String.format("%-6s %-6s %-10s %-10s %-5s\n",
+                    "ID", "Year", "Make", "Model", "Doors"));
+
+            // Data rows
+            for (Car car : allCars) {
+                report.append(String.format("%-6s %-6s %-10s %-10s %-5s\n",
+                        String.valueOf(car.getCarId()),
+                        car.getYear(),
+                        car.getMake(),
+                        car.getModel(),
+                        String.valueOf(car.getDoors())
+                ));
+            }
+
+            // Show in a dialog
+            new androidx.appcompat.app.AlertDialog.Builder(this)
+                    .setTitle("Vehicle Report")
+                    .setMessage(report.toString())
+                    .setPositiveButton("OK", null)
+                    .show();
+        });
+
         // RecyclerView + Adapter
         RecyclerView recyclerView = findViewById(R.id.recycler);
         carAdapter = new CarAdapter(this);
@@ -77,11 +110,11 @@ public class CarActivity extends AppCompatActivity {
         // Load all cars initially
         carAdapter.setCars(repository.getmAllCars());
 
-        // FAB adds a new car (example)
+        // FAB adds a new car
         fab.setOnClickListener(v -> {
             Car newCar = new Car(0, "2026", "Honda", "Civic", 4);
             repository.insert(newCar);
-            carAdapter.setCars(repository.getmAllCars()); // refresh
+            carAdapter.setCars(repository.getmAllCars());
         });
 
         // Search functionality

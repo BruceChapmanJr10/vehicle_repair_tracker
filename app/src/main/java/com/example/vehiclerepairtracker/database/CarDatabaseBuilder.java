@@ -12,7 +12,7 @@ import com.example.vehiclerepairtracker.dao.RepairListDao;
 import com.example.vehiclerepairtracker.entities.Car;
 import com.example.vehiclerepairtracker.entities.Repair;
 
-@Database(entities = {Car.class, Repair.class}, version = 4, exportSchema = false)
+@Database(entities = {Car.class, Repair.class}, version = 5, exportSchema = false)
 
 public abstract class CarDatabaseBuilder extends RoomDatabase {
 
