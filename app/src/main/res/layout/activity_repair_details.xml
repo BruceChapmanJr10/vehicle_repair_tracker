@@ -29,7 +29,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Repair"
+                    android:text="@string/repair"
                     android:textSize="24sp" />
 
                 <EditText
@@ -50,14 +50,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Repair Date"
+                    android:text="@string/repair_date"
                     android:textSize="24sp" />
 
                 <EditText
                     android:id="@+id/repairDate"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:hint="MM/DD/YYYY"
+                    android:hint="@string/mm_dd_yyyy"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
-        android:text="Repair Details"
+        android:text="@string/repair_details"
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

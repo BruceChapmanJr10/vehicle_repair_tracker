@@ -13,7 +13,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Left Text"
+            android:text="@string/left_text"
             android:textSize="28sp"  />
 
         <TextView
@@ -21,7 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Right Text"
+            android:text="@string/right_text"
             android:textSize="28sp"
             android:gravity="end" />
 

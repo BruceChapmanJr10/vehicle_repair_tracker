@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Vehicle Repair Tracker</string>
+    <string name="username">Username</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="generate_report">Generate Report</string>
+    <string name="search">Search</string>
+    <string name="search_vehicles">Search vehicles</string>
+    <string name="vehicle_year">Vehicle Year</string>
+    <string name="vehicle_make">Vehicle Make</string>
+    <string name="vehicle_model">Vehicle Model</string>
+    <string name="repairs">Repairs</string>
+    <string name="car_details">Car Details</string>
+    <string name="vehicle_repair_tracker">Vehicle Repair Tracker</string>
+    <string name="keep_track_of_all_your_vehicle_repairs">Keep Track Of All Your Vehicle Repairs!</string>
+    <string name="vehicles">Vehicles</string>
+    <string name="repair">Repair</string>
+    <string name="repair_date">Repair Date</string>
+    <string name="mm_dd_yyyy">MM/DD/YYYY</string>
+    <string name="repair_details">Repair Details</string>
+    <string name="year">Year</string>
+    <string name="make">Make</string>
+    <string name="model">Model</string>
+    <string name="right_text">Right Text</string>
+    <string name="left_text">Left Text</string>
+    <string name="save">save</string>
+    <string name="delete">delete</string>
+    <string name="saveRepair">save</string>
+    <string name="deleteRepair">delete</string>
 </resources>
