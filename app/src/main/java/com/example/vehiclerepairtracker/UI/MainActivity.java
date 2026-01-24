@@ -14,7 +14,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.vehiclerepairtracker.database.Repository;
+import com.example.vehiclerepairtracker.database.CarDatabaseBuilder;
 import com.example.vehiclerepairtracker.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,9 +54,21 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.logout) {
+
+            //logout of firebase
+            FirebaseAuth.getInstance().signOut();
+
             // Clear login state
+
             SharedPreferences prefs = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
             prefs.edit().putBoolean("isLoggedIn", false).apply();
+
+            // Clear local Room database so new user starts fresh
+            new Thread(() -> {
+                Repository.databaseExecutor.execute(() -> {
+                    CarDatabaseBuilder.getDataBase(getApplicationContext()).clearAllTables();
+                });
+            }).start();
 
             // Navigate back to LoginActivity
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);

@@ -53,15 +53,17 @@ public class CarActivity extends AppCompatActivity {
 
         repository = new Repository(getApplication());
 
-        repository.insert(new Car(0, "2010", "Ford", "Focus", 4));
-        repository.insert(new Car(0, "2012", "Ford", "Fusion", 4));
-        repository.insert(new Car(0, "2018", "Toyota", "Camry", 4));
-        repository.insert(new Car(0, "2020", "Toyota", "Corolla", 4));
-        repository.insert(new Car(0, "2021", "Honda", "Civic", 4));
-        repository.insert(new Car(0, "2019", "Honda", "Accord", 4));
-        repository.insert(new Car(0, "2022", "Tesla", "Model 3", 4));
-        repository.insert(new Car(0, "2023", "Tesla", "Model X", 4));
-        repository.insert(new Car(0, "2015", "Ford", "Mustang", 2));
+        //Examples
+
+//        repository.insert(new Car(0, "2010", "Ford", "Focus", 4));
+//        repository.insert(new Car(0, "2012", "Ford", "Fusion", 4));
+//        repository.insert(new Car(0, "2018", "Toyota", "Camry", 4));
+//        repository.insert(new Car(0, "2020", "Toyota", "Corolla", 4));
+//        repository.insert(new Car(0, "2021", "Honda", "Civic", 4));
+//        repository.insert(new Car(0, "2019", "Honda", "Accord", 4));
+//        repository.insert(new Car(0, "2022", "Tesla", "Model 3", 4));
+//        repository.insert(new Car(0, "2023", "Tesla", "Model X", 4));
+//        repository.insert(new Car(0, "2015", "Ford", "Mustang", 2));
 
         // Views
         searchText = findViewById(R.id.searchText);

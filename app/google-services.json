@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "116116821954",
+    "project_id": "vehicle-repair-tracker-cc6ac",
+    "storage_bucket": "vehicle-repair-tracker-cc6ac.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116116821954:android:6a23dac33a37cf109b685b",
+        "android_client_info": {
+          "package_name": "com.example.vehiclerepairtracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXIRRtWmorQMPqep228Ad_SxlWJzowWTI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -7,8 +7,12 @@ import com.example.vehiclerepairtracker.dao.RepairListDao;
 import com.example.vehiclerepairtracker.dao.UserDao;
 import com.example.vehiclerepairtracker.entities.Car;
 import com.example.vehiclerepairtracker.entities.Repair;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -23,14 +27,22 @@ public class Repository {
 
     private List<Repair> mAllRepairs;
 
+    private FirebaseFirestore firestore;
+
+    private FirebaseAuth auth;
+
     private static int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    static final public ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public Repository(Application application) {
         CarDatabaseBuilder db = CarDatabaseBuilder.getDataBase(application);
         mCarDao = db.carListDao();
         mRepairDao= db.repairListDao();
         mUserDao = db.userDao();
+
+        //firebase
+        firestore = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
     }
 
     public List<Car> getmAllCars() {
@@ -39,6 +51,21 @@ public class Repository {
 
     public void insert(Car car) {
         databaseExecutor.execute(() -> mCarDao.insert(car));
+
+
+        //  Firestore
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) return;
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+        data.put("year", car.getYear());
+        data.put("make", car.getMake());
+        data.put("model", car.getModel());
+        data.put("doors", car.getDoors());
+
+        FirebaseFirestore.getInstance()
+                .collection("cars")
+                .add(data);
     }
 
 
@@ -64,15 +91,21 @@ public class Repository {
         }
     }
 
+    //Firestore
     public void insert(Repair repair) {
-        databaseExecutor.execute(() -> {
-            mRepairDao.insert(repair);
-        });
-        try {
-            Thread.sleep(500); // optional, for simplicity
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        databaseExecutor.execute(() -> mRepairDao.insert(repair));
+
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) return;
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+        data.put("carId", repair.getCarId());
+        data.put("repairFinished", repair.getRepairFinished());
+        data.put("dateFinished", repair.getDateFinished());
+
+        FirebaseFirestore.getInstance()
+                .collection("repairs")
+                .add(data);
     }
 
     public void update(Repair repair) {

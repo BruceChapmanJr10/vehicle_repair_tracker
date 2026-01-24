@@ -116,7 +116,7 @@ public class RepairDetailsActivity extends AppCompatActivity {
             } else {
 
                 // UPDATE
-               Repair repair = new Repair(
+                Repair repair = new Repair(
                         repairId,
                         carId,
                         service,
