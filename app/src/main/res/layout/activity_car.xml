@@ -6,7 +6,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.CarActivity">
+    tools:context=".UI.CarActivity"
+    android:background="@color/black">
 
     <!-- Search input -->
     <EditText
@@ -18,7 +19,8 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColorHint="@color/dark_gray"/>
 
     <!-- Search button -->
     <Button
@@ -26,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:backgroundTint="@color/material_dynamic_primary10"
+        android:backgroundTint="@color/dark_gray"
         android:text="@string/search"
         android:textAllCaps="true"
         android:textColor="@color/divider"
@@ -39,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/material_dynamic_primary10"
+        android:backgroundTint="@color/dark_gray"
         android:text="@string/generate_report"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
