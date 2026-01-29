@@ -49,8 +49,9 @@
 
                 <EditText
                     android:id="@+id/vehicleYear"
-                    android:layout_width="100dp"
+                    android:layout_width="119dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -69,8 +70,9 @@
 
                 <EditText
                     android:id="@+id/vehicleMake"
-                    android:layout_width="100dp"
+                    android:layout_width="115dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -91,6 +93,7 @@
                     android:id="@+id/vehicleModel"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -102,10 +105,11 @@
         android:id="@+id/repairRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/textView4"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/textView4" />
 
     <TextView
         android:id="@+id/textView4"
@@ -114,10 +118,10 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="28dp"
         android:text="@string/repairs"
+        android:textColor="@color/gray"
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollview"
-        android:textColor="@color/gray"/>
+        app:layout_constraintTop_toBottomOf="@+id/scrollview" />
 
     <TextView
         android:id="@+id/textView5"
