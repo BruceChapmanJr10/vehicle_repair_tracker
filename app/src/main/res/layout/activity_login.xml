@@ -56,6 +56,7 @@
         app:layout_constraintTop_toBottomOf="@id/usernameEdit"
         android:textColor="@color/white"/>
 
+    <!-- Sign Up -->
     <Button
         android:id="@+id/signupButton"
         android:layout_width="200dp"
@@ -68,6 +69,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton"
         app:layout_constraintVertical_bias="0.163" />
+
+    <!--Google signup -->
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/googleSignInButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/signupButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 
 

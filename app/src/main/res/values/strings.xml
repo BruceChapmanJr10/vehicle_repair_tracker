@@ -28,4 +28,7 @@
     <string name="saveRepair">save</string>
     <string name="deleteRepair">delete</string>
     <string name="sign_up">Sign Up</string>
+    <string name="default_web_client_id">
+    116116821954-qnp6fvei3s9jjnkqsubg5lpc9n9gm864.apps.googleusercontent.com
+    </string>
 </resources>
