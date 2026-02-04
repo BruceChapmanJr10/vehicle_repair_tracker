@@ -62,6 +62,8 @@ public class RepairDetailsActivity extends AppCompatActivity {
         repairService = findViewById(R.id.vehicleRepair);
         repairDate = findViewById(R.id.repairDate);
 
+
+        //Save repairs button
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,8 @@ public class CarActivity extends AppCompatActivity {
     EditText searchText;
     Button searchButton;
     CarAdapter carAdapter;
+    TextView emptyText;
+
 
 
     @Override
@@ -39,6 +42,7 @@ public class CarActivity extends AppCompatActivity {
 
         searchText = findViewById(R.id.searchText);
         searchButton = findViewById(R.id.searchButton);
+        emptyText = findViewById(R.id.emptyText);
 
 
 
@@ -48,7 +52,7 @@ public class CarActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int vehicleDoors = 4;
                 Vehicle newCar = new Car(1,"1992","Honda", "Civic", vehicleDoors);
-                System.out.println("Added vehicle: " + newCar.getVehicleType() + " " + newCar.getMake() + " " + newCar.getModel());
+                //System.out.println("Added vehicle: " + newCar.getVehicleType() + " " + newCar.getMake() + " " + newCar.getModel());
                 Intent intent = new Intent(CarActivity.this, CarDetailsActivity.class);
                 startActivity(intent);
             }
@@ -56,17 +60,6 @@ public class CarActivity extends AppCompatActivity {
 
         repository = new Repository(getApplication());
 
-        //Examples
-
-//        repository.insert(new Car(0, "2010", "Ford", "Focus", 4));
-//        repository.insert(new Car(0, "2012", "Ford", "Fusion", 4));
-//        repository.insert(new Car(0, "2018", "Toyota", "Camry", 4));
-//        repository.insert(new Car(0, "2020", "Toyota", "Corolla", 4));
-//        repository.insert(new Car(0, "2021", "Honda", "Civic", 4));
-//        repository.insert(new Car(0, "2019", "Honda", "Accord", 4));
-//        repository.insert(new Car(0, "2022", "Tesla", "Model 3", 4));
-//        repository.insert(new Car(0, "2023", "Tesla", "Model X", 4));
-//        repository.insert(new Car(0, "2015", "Ford", "Mustang", 2));
 
         // Views
         searchText = findViewById(R.id.searchText);
@@ -112,7 +105,7 @@ public class CarActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Load all cars initially
-        carAdapter.setCars(repository.getmAllCars());
+        updateCarList(repository.getmAllCars(), emptyText);
 
         // FAB adds a new car
         FloatingActionButton fab = findViewById(R.id.addCarDetails);
@@ -127,16 +120,35 @@ public class CarActivity extends AppCompatActivity {
         // Search functionality
         searchButton.setOnClickListener(v -> {
             String query = searchText.getText().toString().trim();
+
             if (query.isEmpty()) {
-                carAdapter.setCars(repository.getmAllCars());
+                updateCarList(repository.getmAllCars(), emptyText);
             } else {
-                carAdapter.setCars(repository.searchCars(query));
+                updateCarList(repository.searchCars(query), emptyText);
             }
         });
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    //Set text for empty car list
+    private void updateCarList(List<Car> cars, TextView emptyText) {
+        carAdapter.setCars(cars);
+
+        if (cars == null || cars.isEmpty()) {
+            emptyText.setVisibility(View.VISIBLE);
+        } else {
+            emptyText.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateCarList(repository.getmAllCars(), emptyText);
     }
 }
