@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class CarDetailsActivity extends AppCompatActivity {
     String model;
     int numRepairs;
     int repairId;
+    Button saveButton;
 
     TextView editYear;
     TextView editMake;
@@ -46,6 +48,7 @@ public class CarDetailsActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_car_details);
 
+        //Add Vehicle Repair Btn
         FloatingActionButton btn = findViewById(R.id.floatingActionButton);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,12 +59,12 @@ public class CarDetailsActivity extends AppCompatActivity {
             }
         });
 
-
         repository = new Repository(getApplication());
 
         editYear = findViewById(R.id.vehicleYear);
         editMake = findViewById(R.id.vehicleMake);
         editModel = findViewById(R.id.vehicleModel);
+        saveButton = findViewById(R.id.saveVehicleBtn);
 
 
         carId = getIntent().getIntExtra("carId", -1);
@@ -83,6 +86,43 @@ public class CarDetailsActivity extends AppCompatActivity {
             editMake.setText(currentCar.getMake());
             editModel.setText(currentCar.getModel());
         }
+
+        //Save Vehicle Btn
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (currentCar == null && carId != -1) {
+                    currentCar = repository.getCarById(carId);
+                }
+
+                if (currentCar == null) {
+                    // INSERT
+                    Car newCar = new Car(
+                            0,
+                            editYear.getText().toString(),
+                            editMake.getText().toString(),
+                            editModel.getText().toString(),
+                            4
+
+                    );
+                    repository.insert(newCar);
+                    currentCar = newCar;
+                    Toast.makeText(CarDetailsActivity.this, "Car added", Toast.LENGTH_SHORT).show();
+                } else {
+                    // UPDATE
+                    currentCar.setYear(editYear.getText().toString());
+                    currentCar.setMake(editMake.getText().toString());
+                    currentCar.setModel(editModel.getText().toString());
+
+                    repository.update(currentCar);
+                    Toast.makeText(CarDetailsActivity.this, "Car updated", Toast.LENGTH_SHORT).show();
+                }
+                Intent intent = new Intent(CarDetailsActivity.this, CarActivity.class);
+                startActivity(intent);
+
+
+            }
+        });
 
         RecyclerView recyclerView = findViewById(R.id.repairRecyclerView);
         final RepairAdapter repairAdapter = new RepairAdapter(this);
@@ -193,7 +233,7 @@ public class CarDetailsActivity extends AppCompatActivity {
         recyclerView.setAdapter(repairAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<Repair> filteredRepairs = new ArrayList<>();
-        for (Repair p : repository.getRepairsForCar(carId)){
+        for (Repair p : repository.getRepairsForCar(carId)) {
             if (p.getCarId() == carId) filteredRepairs.add(p);
         }
         repairAdapter.setRepairList(filteredRepairs);

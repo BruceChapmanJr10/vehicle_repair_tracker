@@ -23,9 +23,9 @@
 
     <ScrollView
         android:id="@+id/scrollview"
-        android:layout_width="409dp"
-        android:layout_height="253dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="396dp"
+        android:layout_height="244dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5">
 
@@ -44,8 +44,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/vehicle_year"
-                    android:textSize="20sp"
-                    android:textColor="@color/gray"/>
+                    android:textColor="@color/gray"
+                    android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/vehicleYear"
@@ -65,8 +65,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/vehicle_make"
-                    android:textSize="20sp"
-                    android:textColor="@color/gray"/>
+                    android:textColor="@color/gray"
+                    android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/vehicleMake"
@@ -86,8 +86,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/vehicle_model"
-                    android:textSize="20sp"
-                    android:textColor="@color/gray"/>
+                    android:textColor="@color/gray"
+                    android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/vehicleModel"
@@ -134,6 +134,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textColor="@color/gray"/>
+
+    <Button
+        android:id="@+id/saveVehicleBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Vehicle"
+        app:layout_constraintBottom_toTopOf="@+id/scrollview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.879"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

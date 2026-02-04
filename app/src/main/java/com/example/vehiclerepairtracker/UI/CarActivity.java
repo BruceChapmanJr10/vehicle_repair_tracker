@@ -28,6 +28,8 @@ public class CarActivity extends AppCompatActivity {
     EditText searchText;
     Button searchButton;
     CarAdapter carAdapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,7 @@ public class CarActivity extends AppCompatActivity {
 
         searchText = findViewById(R.id.searchText);
         searchButton = findViewById(R.id.searchButton);
+
 
 
         FloatingActionButton btn = findViewById(R.id.addCarDetails);

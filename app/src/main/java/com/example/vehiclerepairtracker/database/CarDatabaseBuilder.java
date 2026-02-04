@@ -14,7 +14,7 @@ import com.example.vehiclerepairtracker.entities.Car;
 import com.example.vehiclerepairtracker.entities.Repair;
 import com.example.vehiclerepairtracker.entities.User;
 
-@Database(entities = {Car.class, Repair.class, User.class}, version = 21, exportSchema = false)
+@Database(entities = {Car.class, Repair.class, User.class}, version = 22, exportSchema = false)
 
 public abstract class CarDatabaseBuilder extends RoomDatabase {
 
