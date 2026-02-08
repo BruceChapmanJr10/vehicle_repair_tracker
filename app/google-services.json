@@ -12,7 +12,20 @@
           "package_name": "com.example.vehiclerepairtracker"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "116116821954-jut2k3ii4752s51riogdttlt8vtu30ks.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vehiclerepairtracker",
+            "certificate_hash": "87fd5c406f16a6307dac3ea02a2abeb290764095"
+          }
+        },
+        {
+          "client_id": "116116821954-qnp6fvei3s9jjnkqsubg5lpc9n9gm864.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBXIRRtWmorQMPqep228Ad_SxlWJzowWTI"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "116116821954-qnp6fvei3s9jjnkqsubg5lpc9n9gm864.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

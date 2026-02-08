@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CarActivity.class);
                 startActivity(intent);
-
             }
         });
 
@@ -59,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             FirebaseAuth.getInstance().signOut();
 
             // Clear login state
-
             SharedPreferences prefs = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
             prefs.edit().putBoolean("isLoggedIn", false).apply();
 
@@ -78,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-
 
     }
 

@@ -3,6 +3,8 @@ package com.example.vehiclerepairtracker.UI;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ public class RepairDetailsActivity extends AppCompatActivity {
     EditText repairDate;
     EditText editService;
     EditText editDate;
+    Button saveBtn;
 
     String service;
     String date;
@@ -43,6 +46,7 @@ public class RepairDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_repair_details);
 
         repository = new Repository(getApplication());
+        saveBtn = findViewById(R.id.saveRepairBtn);
 
         service = getIntent().getStringExtra("repair");
         editService = findViewById(R.id.vehicleRepair);
@@ -57,6 +61,52 @@ public class RepairDetailsActivity extends AppCompatActivity {
         carId = getIntent().getIntExtra("carId", -1);
         repairService = findViewById(R.id.vehicleRepair);
         repairDate = findViewById(R.id.repairDate);
+
+
+        //Save repairs button
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String service = repairService.getText().toString();
+                String date = repairDate.getText().toString();
+
+                if (!isValidDate(date)) {
+                    Toast.makeText(RepairDetailsActivity.this,
+                            "Dates must be in MM/dd/yyyy format",
+                            Toast.LENGTH_LONG).show();
+                }
+                else{
+
+                //validate repair date
+                Car parentCar = repository.getCarById(carId);
+                if (parentCar == null) {
+                    Toast.makeText(RepairDetailsActivity.this, "Associated car not found", Toast.LENGTH_SHORT).show();
+                }
+
+                if (repairId == -1) {
+                    // ADD
+                    Repair repair = new Repair(
+                            0,
+                            carId,
+                            service,
+                            date
+                    );
+                    repository.insert(repair);
+                } else {
+
+                    // UPDATE
+                    Repair repair = new Repair(
+                            repairId,
+                            carId,
+                            service,
+                            date
+                    );
+                    repository.update(repair);
+                }
+
+                finish();
+            }}
+        });
 
         ArrayList<Car> carArrayList = new ArrayList<>();
         carArrayList.addAll(repository.getmAllCars());

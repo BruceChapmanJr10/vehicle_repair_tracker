@@ -10,7 +10,7 @@
     <string name="vehicle_make">Vehicle Make</string>
     <string name="vehicle_model">Vehicle Model</string>
     <string name="repairs">Repairs</string>
-    <string name="car_details">Car Details</string>
+    <string name="car_details">Vehicle Details</string>
     <string name="vehicle_repair_tracker">Vehicle Repair Tracker</string>
     <string name="keep_track_of_all_your_vehicle_repairs">Keep Track Of All Your Vehicle Repairs!</string>
     <string name="vehicles">Vehicles</string>
@@ -28,4 +28,23 @@
     <string name="saveRepair">save</string>
     <string name="deleteRepair">delete</string>
     <string name="sign_up">Sign Up</string>
+    <string name="default_web_client_id">
+    116116821954-qnp6fvei3s9jjnkqsubg5lpc9n9gm864.apps.googleusercontent.com
+    </string>
+    <string name="add_a_vehicle">Add a vehicle!</string>
+    <string name="add_car_button">Add car button</string>
+    <string name="vehicles1">Vehicles</string>
+    <string name="add_vehicle" />
+    <string name="add_vehicle_prompt" />
+    <string name="vehicles_title" />
+    <string name="add_repair_button">Add repair button</string>
+    <string name="save_vehicle">Save Vehicle</string>
+    <string name="email">Email</string>
+    <string name="vehicle_repair_tracker1">Vehicle Repair Tracker</string>
+    <string name="new_user_enter_email_and_password_then_press_sign_up_or_sign_up_with_google">New user: Enter email and password then press sign up or sign up with Google.</string>
+    <string name="vehicle_year_hint" />
+    <string name="add_repair" />
+    <string name="vehicles11">Vehicles</string>
+    <string name="add_car_details">add car details</string>
+    <string name="addVehicle">Add a vehicle!</string>
 </resources>

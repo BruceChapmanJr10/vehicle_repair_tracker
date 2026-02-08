@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.MainActivity">
+    tools:context=".UI.MainActivity"
+    android:background="@color/black">
 
     <TextView
         android:id="@+id/homeTitle"
@@ -17,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/gray"/>
 
     <TextView
         android:id="@+id/homeText"
@@ -28,18 +30,19 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/homeTitle"
+        android:textColor="@color/gray"/>
 
     <Button
         android:id="@+id/homeButton"
         android:layout_width="148dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="312dp"
-        android:backgroundTint="@color/material_dynamic_primary10"
+        android:backgroundTint="@color/dark_gray"
         android:text="@string/vehicles"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

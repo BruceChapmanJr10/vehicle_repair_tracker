@@ -46,7 +46,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
             holder.carItemView2.setText(make);
             holder.carItemView3.setText(model);
         } else {
-            holder.carItemView.setText("No Car Name");
+            holder.carItemView2.setText("Add a vehicle!");
         }
     }
 

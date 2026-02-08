@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     android:padding="24dp">
 
-    <!-- Username -->
 
-    <!-- Password -->
+    <!-- Username -->
     <EditText
         android:id="@+id/usernameEdit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
-        android:hint="@string/username"
+        android:hint="@string/email"
         android:imeOptions="actionNext"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
+        android:autofillHints="emailAddress"
+        android:importantForAutofill="yes"
+        android:textColor="@color/white"
+        android:textColorHint="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Login Button -->
     <Button
         android:id="@+id/loginButton"
         android:layout_width="132dp"
         android:layout_height="46dp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/material_dynamic_primary10"
+        android:backgroundTint="@color/dark_gray"
         android:text="@string/login"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,6 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/passwordEdit" />
 
+    <!-- Password -->
     <EditText
         android:id="@+id/passwordEdit"
         android:layout_width="0dp"
@@ -45,24 +50,61 @@
         android:hint="@string/password"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
+        android:textColor="@color/white"
+        android:textColorHint="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/usernameEdit" />
 
+    <!-- Sign Up -->
+
+    <!--Google signup -->
+
     <Button
         android:id="@+id/signupButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/material_dynamic_primary10"
-        android:textSize="20sp"
+        android:layout_marginTop="84dp"
+        android:backgroundTint="@color/dark_gray"
         android:text="@string/sign_up"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/googleSignInButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signupButton" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vehicle_repair_tracker1"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/usernameEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_user_enter_email_and_password_then_press_sign_up_or_sign_up_with_google"
+        app:layout_constraintBottom_toTopOf="@+id/signupButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton"
-        app:layout_constraintVertical_bias="0.163" />
+        android:textColor="@color/white"/>
 
-    <!-- Login Button -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
