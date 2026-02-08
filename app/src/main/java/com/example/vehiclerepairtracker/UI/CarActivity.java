@@ -32,38 +32,17 @@ public class CarActivity extends AppCompatActivity {
     TextView emptyText;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_car);
 
-
         searchText = findViewById(R.id.searchText);
         searchButton = findViewById(R.id.searchButton);
         emptyText = findViewById(R.id.emptyText);
 
-
-
-        FloatingActionButton btn = findViewById(R.id.addCarDetails);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int vehicleDoors = 4;
-                Vehicle newCar = new Car(1,"1992","Honda", "Civic", vehicleDoors);
-                //System.out.println("Added vehicle: " + newCar.getVehicleType() + " " + newCar.getMake() + " " + newCar.getModel());
-                Intent intent = new Intent(CarActivity.this, CarDetailsActivity.class);
-                startActivity(intent);
-            }
-        });
-
         repository = new Repository(getApplication());
-
-
-        // Views
-        searchText = findViewById(R.id.searchText);
-        searchButton = findViewById(R.id.searchButton);
 
         Button reportButton = findViewById(R.id.reportButton);
 
@@ -110,7 +89,7 @@ public class CarActivity extends AppCompatActivity {
         // FAB adds a new car
         FloatingActionButton fab = findViewById(R.id.addCarDetails);
 
-// Set a single click listener
+        // Set a single click listener
         fab.setOnClickListener(v -> {
             carAdapter.setCars(repository.getmAllCars());
             Intent intent = new Intent(CarActivity.this, CarDetailsActivity.class);
